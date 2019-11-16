@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Provider } from 'react-redux';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import './App.css';
-
-import Search from './components/Search';
 import { store } from './redux';
 
-const App: React.FC = () => {
+import Search from './components/Search';
+import Photos from './components/Photos';
+
+const App: FC = () => {
   return (
     <Provider store={store}>
       <div className="App">
         <CssBaseline />
         <Search />
+        <Photos />
       </div>
     </Provider>
   );
