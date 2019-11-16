@@ -1,7 +1,7 @@
 // @ts-ignore
 import Flickr from 'flickr-sdk';
 
-interface FlickrAPIServiceInterface {
+export interface FlickrAPIServiceInterface {
   search: (text: string) => any;
 }
 
