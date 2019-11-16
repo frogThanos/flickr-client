@@ -1,11 +1,7 @@
 import { FlickrAPIService } from '../services';
-import { FlickrAPIServiceInterface } from '../services/FlickrAPIService';
+import { ServiceLocatorInterface } from './types';
 
 const flickrAPIService = new FlickrAPIService();
-
-interface ServiceLocatorInterface {
-  readonly flickrAPIService: FlickrAPIServiceInterface;
-}
 
 const serviceLocator: ServiceLocatorInterface = {
   flickrAPIService

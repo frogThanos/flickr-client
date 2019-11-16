@@ -11,14 +11,14 @@ class FlickrAPIService implements FlickrAPIServiceInterface {
     this.flickr = new Flickr(process.env.REACT_APP_API_KEY)
   }
 
-   async search(searchText:string) {
+   async search(searchText:string): Promise<any> {
     try {
       const response = await this.flickr.photos.search({
         text: searchText
       });
       return response.body;
     } catch (error) {
-      console.error('bonk', error);
+      console.error('error', error);
     }
   }
 }

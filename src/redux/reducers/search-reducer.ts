@@ -1,16 +1,16 @@
 import { Constants } from '../actions';
 
-export interface DefaultStateInterface {
+export interface searchReducerInterface {
   searchText: string;
   isTyping: boolean;
 }
 
-export const defaultState: DefaultStateInterface = {
+export const defaultState: searchReducerInterface = {
   searchText: '',
   isTyping: false,
 };
 
-const searchReducer = (state = defaultState, action: any): DefaultStateInterface => {
+const searchReducer = (state = defaultState, action: any): searchReducerInterface => {
   switch (action.type) {
     case Constants.SET_SEARCH_TEXT: {
       return {
