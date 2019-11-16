@@ -2,7 +2,7 @@
 import Flickr from 'flickr-sdk';
 
 export interface FlickrAPIServiceInterface {
-  search: (text: string) => any;
+  search: (searchText: string) => any;
 }
 
 class FlickrAPIService implements FlickrAPIServiceInterface {
@@ -11,15 +11,15 @@ class FlickrAPIService implements FlickrAPIServiceInterface {
     this.flickr = new Flickr(process.env.REACT_APP_API_KEY)
   }
 
-  search(text:string) {
-    return this.flickr.photos.search({
-      text
-    }).then(function (res: any) {
-      return res.body;
-      console.log('yay!', res.body);
-    }).catch(function (err: any) {
-      console.error('bonk', err);
-    });
+   async search(searchText:string) {
+    try {
+      const response = await this.flickr.photos.search({
+        text: searchText
+      });
+      return response.body;
+    } catch (error) {
+      console.error('bonk', error);
+    }
   }
 }
 
