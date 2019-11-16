@@ -6,14 +6,13 @@ const useStyles = makeStyles(() =>
       display: 'flex',
       flexWrap: 'wrap',
       marginTop: 40,
+      marginBottom: 40,
     },
     textField: {
-      flex: 3,
-      marginLeft: '10%',
-    },
-    button: {
       flex: 1,
-    }
+      marginLeft: '10%',
+      marginRight: '10%',
+    },
   }),
 );
 

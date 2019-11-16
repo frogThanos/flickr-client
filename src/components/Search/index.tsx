@@ -1,7 +1,6 @@
-import React, { FC } from 'react';
+import React, { FC, KeyboardEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import { searchActions, photosActions } from '../../redux/actions';
 import useStyles from './useStyles';
 
@@ -11,25 +10,21 @@ const Search: FC = () => {
   const handleOnChange = (event: any) => {
     dispatch(searchActions.setSearchText(event.target.value));
   };
-  const handleOnClick = () => {
-    console.log('handleOnClick');
-    dispatch(photosActions.fetchPhotos());
+  const OnKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      event.stopPropagation();
+      dispatch(photosActions.fetchPhotos());
+    }
   };
   return (
     <div className={classes.container}>
       <TextField
+        onKeyDown={OnKeyDown}
         label="Search for Flickr images!"
         className={classes.textField}
         onChange={handleOnChange}
       />
-      <Button
-        onClick={handleOnClick}
-        className={classes.button}
-        variant="contained"
-        color="primary"
-      >
-        Search
-      </Button>
     </div>
   );
 };
