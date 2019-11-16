@@ -2,11 +2,13 @@ import { Constants } from '../actions';
 
 export interface searchReducerInterface {
   searchText: string;
+  currentPage: number;
   isTyping: boolean;
 }
 
 export const defaultState: searchReducerInterface = {
   searchText: '',
+  currentPage: 1,
   isTyping: false,
 };
 

@@ -11,9 +11,9 @@ const getPhotosSuccess = (page: number, pages: number, photo: [], total: string)
 });
 
 const fetchPhotos = () => async (dispatch: any, getState: GetState, { flickrAPIService }: ServiceLocatorInterface) => {
-  const { searchText } = getState().searchReducer;
+  const { searchText, currentPage } = getState().searchReducer;
   if (searchText) {
-    const result = await flickrAPIService.search(searchText);
+    const result = await flickrAPIService.search(searchText, currentPage);
     const { page, pages, photo, total } = result.photos;
     dispatch(getPhotosSuccess(page, pages, photo, total));
   }

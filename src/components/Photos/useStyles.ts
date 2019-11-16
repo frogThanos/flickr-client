@@ -12,6 +12,11 @@ const useStyles = makeStyles(() =>
     gridList: {
       width: '80%',
     },
+    image: {
+      height: 250,
+      width: 250,
+      border: '1px solid black'
+    }
   }),
 );
 
