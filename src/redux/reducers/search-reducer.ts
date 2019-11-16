@@ -1,6 +1,6 @@
 import { Constants } from '../actions';
 
-interface DefaultStateInterface {
+export interface DefaultStateInterface {
   searchText: string;
   isTyping: boolean;
 }

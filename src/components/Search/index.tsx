@@ -1,16 +1,22 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
+import { searchActions } from '../../redux/actions';
 
 const Search: FC = () => {
-  const [text, setText] = useState('');
+  const dispatch = useDispatch();
+  const searchText: string = useSelector(({ searchReducer }: any) => searchReducer.searchText);
+  const handleOnChange = (event: any) => {
+    dispatch(searchActions.setSearchText(event.target.value));
+  };
   return (
     <div>
       <TextField
-        label="Search on Flickr!"
+        label="Search for Flickr images!"
         margin="normal"
-        onChange={(event) => setText(event.target.value)}
+        onChange={handleOnChange}
       />
-      <h1>{text}</h1>
+      <h1>{searchText}</h1>
     </div>
   );
 };
