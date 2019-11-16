@@ -1,12 +1,13 @@
 import React, { FC } from 'react';
+import Container from '@material-ui/core/Container';
 import useStyles from './useStyles';
 
 const Photos: FC = () => {
   const classes = useStyles();
   return(
-    <div className={classes.container}>
+    <Container maxWidth="md" className={classes.container}>
       Photos
-    </div>
+    </Container>
   )
 };
 

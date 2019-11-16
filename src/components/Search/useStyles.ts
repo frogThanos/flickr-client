@@ -8,10 +8,12 @@ const useStyles = makeStyles(() =>
       marginTop: 40,
     },
     textField: {
-      flex: 1,
+      flex: 3,
       marginLeft: '10%',
-      marginRight: '10%',
     },
+    button: {
+      flex: 1,
+    }
   }),
 );
 
