@@ -6,8 +6,7 @@ const Search: FC = () => {
   return (
     <div>
       <TextField
-        id="standard-basic"
-        label="Standard"
+        label="Search on Flickr!"
         margin="normal"
         onChange={(event) => setText(event.target.value)}
       />
