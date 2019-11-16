@@ -5,7 +5,7 @@ import { FlickrAPIServiceInterface } from '../services/FlickrAPIService';
 
 export interface RootStateInterface {
   readonly searchReducer: searchReducerInterface;
-  readonly photoReducer: photosReducerInterface;
+  readonly photosReducer: photosReducerInterface;
 }
 
 export interface ServiceLocatorInterface {
