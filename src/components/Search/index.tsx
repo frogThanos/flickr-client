@@ -20,6 +20,7 @@ const Search: FC = () => {
   return (
     <div className={classes.container}>
       <TextField
+        required
         onKeyDown={OnKeyDown}
         label="Search for Flickr images!"
         className={classes.textField}
