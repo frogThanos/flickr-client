@@ -9,7 +9,7 @@ const LoadingIndicator: FC = () => {
   const isLoading = useSelector(({ photosReducer }: RootStateInterface) => photosReducer.isLoading);
   return (
     <Fragment>
-      {!isLoading && <LinearProgress className={classes.line} color='primary' />}
+      {isLoading && <LinearProgress className={classes.line} color='primary' />}
     </Fragment>
   )
 };
