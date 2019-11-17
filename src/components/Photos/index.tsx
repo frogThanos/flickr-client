@@ -7,6 +7,7 @@ import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import TablePagination from "@material-ui/core/TablePagination";
+import LinearProgress from '@material-ui/core/LinearProgress';
 import useStyles from './useStyles';
 
 const Photos: FC = () => {
@@ -16,6 +17,8 @@ const Photos: FC = () => {
   const photo = useSelector(({ photosReducer }: RootStateInterface) => photosReducer.photo);
   const page = useSelector(({ photosReducer }: RootStateInterface) => photosReducer.page);
   const pages = useSelector(({ photosReducer }: RootStateInterface) => photosReducer.pages);
+  const isLoading = useSelector(({ photosReducer }: RootStateInterface) => photosReducer.isLoading);
+
   const rowsPerPage = useSelector(({ searchReducer }: RootStateInterface) => searchReducer.rowsPerPage);
   const currentPage = useSelector(({ searchReducer }: RootStateInterface) => searchReducer.currentPage);
 
@@ -30,12 +33,13 @@ const Photos: FC = () => {
   };
   return(
     <div className={classes.container}>
+      {isLoading && <LinearProgress className={classes.line} color='primary' />}
       <GridList cellHeight="auto" className={classes.gridList} cols={4}>
         {
-          photo && photo.length !== 0 && photo.map((item: any) => {
+          photo && photo.length !== 0 && !isLoading && photo.map((item: any) => {
             return (
               <GridListTile key={item.id}>
-                <img src={`https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}_q.jpg`} alt={item.title} />
+                <img src={`https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}.jpg`} alt={item.title} />
                 <GridListTileBar
                   title={item.title}
                 />
@@ -44,15 +48,19 @@ const Photos: FC = () => {
           })
         }
       </GridList>
-      <TablePagination
-        component="nav"
-        page={currentPage}
-        labelRowsPerPage="Number of photos"
-        rowsPerPage={rowsPerPage}
-        count={pages}
-        onChangeRowsPerPage={onChangeRowsPerPage}
-        onChangePage={onChangePage}
-      />
+      {
+        photo && photo.length !== 0 && !isLoading && (
+          <TablePagination
+            component="nav"
+            page={currentPage}
+            labelRowsPerPage="Number of photos"
+            rowsPerPage={rowsPerPage}
+            count={pages}
+            onChangeRowsPerPage={onChangeRowsPerPage}
+            onChangePage={onChangePage}
+          />
+        )
+      }
     </div>
   )
 };

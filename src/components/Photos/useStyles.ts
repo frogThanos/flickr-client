@@ -16,6 +16,9 @@ const useStyles = makeStyles(() =>
       height: 250,
       width: 250,
       border: '1px solid black'
+    },
+    line: {
+      width: '80%',
     }
   }),
 );

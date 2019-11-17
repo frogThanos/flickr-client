@@ -4,14 +4,12 @@ export interface searchReducerInterface {
   searchText: string;
   currentPage: number;
   rowsPerPage: number;
-  isTyping: boolean;
 }
 
 export const defaultState: searchReducerInterface = {
   searchText: '',
   currentPage: 1,
   rowsPerPage: 10,
-  isTyping: false,
 };
 
 const searchReducer = (state = defaultState, action: any): searchReducerInterface => {
