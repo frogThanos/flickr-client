@@ -5,7 +5,6 @@ import { RootStateInterface } from '../../redux/types';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
-import LinearProgress from '@material-ui/core/LinearProgress';
 import useStyles from './useStyles';
 
 // @ts-ignore because it doesn't have @types :(
@@ -19,7 +18,6 @@ const Photos: FC = () => {
 
   return(
     <div className={classes.container}>
-      {isLoading && <LinearProgress className={classes.line} color='primary' />}
       <GridList cellHeight="auto" className={classes.gridList} cols={2}>
         {
           photo && photo.length !== 0 && !isLoading && photo.map((item: any) => {
