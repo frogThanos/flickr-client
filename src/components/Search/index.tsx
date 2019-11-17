@@ -1,12 +1,16 @@
 import React, { FC, KeyboardEvent } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import { searchActions, photosActions } from '../../redux/actions';
 import useStyles from './useStyles';
+import { RootStateInterface } from '../../redux/types';
 
 const Search: FC = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
+
+  const hasError = useSelector(({ photosReducer }: RootStateInterface) => photosReducer.hasError);
+
   const handleOnChange = (event: any) => {
     dispatch(searchActions.setSearchText(event.target.value));
   };
@@ -21,6 +25,9 @@ const Search: FC = () => {
     <div className={classes.container}>
       <TextField
         required
+        error={hasError}
+        variant="outlined"
+        helperText={hasError && "Whoops! Your request failed, please try again :("}
         onKeyDown={OnKeyDown}
         label="Search for Flickr images!"
         className={classes.textField}

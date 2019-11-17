@@ -51,6 +51,7 @@ const photosReducer = (state = defaultState, action: any): photosReducerInterfac
     case Constants.GET_PHOTOS_HAS_ERROR: {
       return {
         ...state,
+        isLoading: false,
         hasError: true,
       }
     }
