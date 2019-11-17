@@ -2,6 +2,7 @@ import { Constants } from '../actions';
 
 export interface photosReducerInterface {
   isLoading: boolean;
+  hasError: boolean;
   page: number;
   pages: number;
   photo: [];
@@ -10,6 +11,7 @@ export interface photosReducerInterface {
 
 export const defaultState: photosReducerInterface = {
   isLoading: false,
+  hasError: false,
   page: 0,
   pages: 0,
   photo: [],
@@ -26,6 +28,7 @@ const photosReducer = (state = defaultState, action: any): photosReducerInterfac
         photo: action.photo,
         total: action.total,
         isLoading: false,
+        hasError: false,
       }
     }
     case Constants.CLEAR_PHOTOS: {
@@ -36,12 +39,19 @@ const photosReducer = (state = defaultState, action: any): photosReducerInterfac
         photo: defaultState.photo,
         total: defaultState.total,
         isLoading: false,
+        hasError: false,
       }
     }
     case Constants.GET_PHOTOS_IS_LOADING: {
       return {
         ...state,
         isLoading: true,
+      }
+    }
+    case Constants.GET_PHOTOS_HAS_ERROR: {
+      return {
+        ...state,
+        hasError: true,
       }
     }
     default:

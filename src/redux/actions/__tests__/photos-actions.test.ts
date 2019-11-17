@@ -23,4 +23,16 @@ describe('photoActions', () => {
     };
     expect(photosActions.clearPhotos()).toEqual(expectedAction)
   });
+  it('should create an action that triggers loading', () => {
+    const expectedAction = {
+      type: Constants.GET_PHOTOS_IS_LOADING,
+    };
+    expect(photosActions.getPhotosIsLoading()).toEqual(expectedAction)
+  });
+  it('should create an action that shows error', () => {
+    const expectedAction = {
+      type: Constants.GET_PHOTOS_HAS_ERROR,
+    };
+    expect(photosActions.getPhotosHasError()).toEqual(expectedAction)
+  });
 });
