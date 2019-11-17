@@ -44,7 +44,7 @@ const Photos: FC = () => {
         {
           photo && photo.length !== 0 && !isLoading && photo.map((item: any) => {
             return (
-              <GridListTile key={item.id}>
+              <GridListTile key={item.id} className={classes.gridTitle}>
                 <LazyLoadImage
                   alt={item.title}
                   effect="opacity"
