@@ -6,6 +6,7 @@ import { store } from './redux';
 
 import Search from './components/Search';
 import Photos from './components/Photos';
+import Pagination from './components/Pagination';
 
 const App: FC = () => {
   return (
@@ -14,6 +15,7 @@ const App: FC = () => {
         <CssBaseline />
         <Search />
         <Photos />
+        <Pagination />
       </div>
     </Provider>
   );

@@ -1,45 +1,35 @@
 import React, { FC } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootStateInterface } from '../../redux/types';
-import { photosActions, searchActions } from '../../redux/actions';
 
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
-import TablePagination from "@material-ui/core/TablePagination";
 import LinearProgress from '@material-ui/core/LinearProgress';
 import useStyles from './useStyles';
 
+// @ts-ignore because it doesn't have @types :(
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/opacity.css';
+
 const Photos: FC = () => {
   const classes = useStyles();
-  const dispatch = useDispatch();
-
   const photo = useSelector(({ photosReducer }: RootStateInterface) => photosReducer.photo);
-  const page = useSelector(({ photosReducer }: RootStateInterface) => photosReducer.page);
-  const pages = useSelector(({ photosReducer }: RootStateInterface) => photosReducer.pages);
   const isLoading = useSelector(({ photosReducer }: RootStateInterface) => photosReducer.isLoading);
 
-  const rowsPerPage = useSelector(({ searchReducer }: RootStateInterface) => searchReducer.rowsPerPage);
-  const currentPage = useSelector(({ searchReducer }: RootStateInterface) => searchReducer.currentPage);
-
-  const onChangeRowsPerPage = (event :any) => {
-    console.log('onChangeRowsPerPage: ', event.target.value);
-    dispatch(searchActions.setRowsPerPage(event.target.value));
-  };
-
-  const onChangePage = () => {
-    console.log('onChangePage');
-    dispatch(photosActions.fetchPhotos());
-  };
   return(
     <div className={classes.container}>
       {isLoading && <LinearProgress className={classes.line} color='primary' />}
-      <GridList cellHeight="auto" className={classes.gridList} cols={4}>
+      <GridList cellHeight="auto" className={classes.gridList} cols={2}>
         {
           photo && photo.length !== 0 && !isLoading && photo.map((item: any) => {
             return (
               <GridListTile key={item.id}>
-                <img src={`https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}.jpg`} alt={item.title} />
+                <LazyLoadImage
+                  alt={item.title}
+                  effect="opacity"
+                  src={`https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}.jpg`}
+                />
                 <GridListTileBar
                   title={item.title}
                 />
@@ -48,19 +38,6 @@ const Photos: FC = () => {
           })
         }
       </GridList>
-      {
-        photo && photo.length !== 0 && !isLoading && (
-          <TablePagination
-            component="nav"
-            page={currentPage}
-            labelRowsPerPage="Number of photos"
-            rowsPerPage={rowsPerPage}
-            count={pages}
-            onChangeRowsPerPage={onChangeRowsPerPage}
-            onChangePage={onChangePage}
-          />
-        )
-      }
     </div>
   )
 };

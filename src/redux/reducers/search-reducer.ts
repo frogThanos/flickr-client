@@ -2,13 +2,11 @@ import { Constants } from '../actions';
 
 export interface searchReducerInterface {
   searchText: string;
-  currentPage: number;
   rowsPerPage: number;
 }
 
 export const defaultState: searchReducerInterface = {
   searchText: '',
-  currentPage: 1,
   rowsPerPage: 10,
 };
 
@@ -18,18 +16,6 @@ const searchReducer = (state = defaultState, action: any): searchReducerInterfac
       return {
         ...state,
         searchText: action.payload,
-      }
-    }
-    case Constants.SET_CURRENT_PAGE: {
-      return {
-        ...state,
-        currentPage: action.payload,
-      }
-    }
-    case Constants.SET_ROWS_PER_PAGE: {
-      return {
-        ...state,
-        rowsPerPage: action.payload,
       }
     }
     default:
