@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { RootStateInterface } from '../../redux/types';
 
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
@@ -13,12 +14,33 @@ import 'react-lazy-load-image-component/src/effects/opacity.css';
 
 const Photos: FC = () => {
   const classes = useStyles();
+  const large = useMediaQuery('(min-width:1600px)');
+  const medium = useMediaQuery('(min-width:1200px)');
+  const small = useMediaQuery('(min-width:600px)');
+  const mobile = useMediaQuery('(min-width:600px)');
+
   const photo = useSelector(({ photosReducer }: RootStateInterface) => photosReducer.photo);
   const isLoading = useSelector(({ photosReducer }: RootStateInterface) => photosReducer.isLoading);
 
+  const calculateColumns = (): number => {
+    if (large) {
+      return 4
+    }
+    if (medium) {
+      return 3
+    }
+    if (small) {
+      return 2
+    }
+    if (mobile) {
+      return 1
+    }
+    return 1;
+  };
+
   return(
     <div className={classes.container}>
-      <GridList cellHeight="auto" className={classes.gridList} cols={2}>
+      <GridList cellHeight="auto" className={classes.gridList} cols={calculateColumns()}>
         {
           photo && photo.length !== 0 && !isLoading && photo.map((item: any) => {
             return (

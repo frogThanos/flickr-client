@@ -7,7 +7,7 @@ export interface searchReducerInterface {
 
 export const defaultState: searchReducerInterface = {
   searchText: '',
-  rowsPerPage: 10,
+  rowsPerPage: 25,
 };
 
 const searchReducer = (state = defaultState, action: any): searchReducerInterface => {
