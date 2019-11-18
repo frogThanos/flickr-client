@@ -29,7 +29,7 @@ const Search: FC = () => {
         variant="outlined"
         helperText={hasError && "Whoops! Your request failed, please try again :("}
         onKeyDown={OnKeyDown}
-        label="Search for Flickr images!"
+        label="Search for Flickr images"
         className={classes.textField}
         onChange={handleOnChange}
       />
