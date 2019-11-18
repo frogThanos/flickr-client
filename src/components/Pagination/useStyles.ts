@@ -5,8 +5,7 @@ const useStyles = makeStyles(() =>
     container: {
       display: 'flex',
       width: '80%',
-      marginLeft: 'auto',
-      marginRight: 'auto',
+      margin: '20px auto 20px auto',
     },
   }),
 );
