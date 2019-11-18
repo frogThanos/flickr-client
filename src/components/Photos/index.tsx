@@ -22,6 +22,9 @@ const Photos: FC = () => {
   const photo = useSelector(({ photosReducer }: RootStateInterface) => photosReducer.photo);
   const isLoading = useSelector(({ photosReducer }: RootStateInterface) => photosReducer.isLoading);
 
+  // I'm sure there is a better way to do this
+  // but because of time constrains I created
+  // this monster :)
   const calculateColumns = (): number => {
     if (large) {
       return 4
@@ -40,7 +43,7 @@ const Photos: FC = () => {
 
   return(
     <div className={classes.container}>
-      <GridList cellHeight="auto" className={classes.gridList} cols={calculateColumns()}>
+      <GridList cellHeight={300} className={classes.gridList} cols={calculateColumns()}>
         {
           photo && photo.length !== 0 && !isLoading && photo.map((item: any) => {
             return (
