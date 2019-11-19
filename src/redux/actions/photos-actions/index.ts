@@ -25,7 +25,8 @@ const getPhotosHasError = () => ({
 const fetchPhotos = () => async (dispatch: any, getState: GetState, { flickrAPIService }: ServiceLocatorInterface) => {
   dispatch(getPhotosIsLoading());
   const { searchText, rowsPerPage } = getState().searchReducer;
-  if(searchText === '') {
+  const emptyString:string = '';
+  if(searchText === emptyString) {
     dispatch(clearPhotos());
   }
   try {
@@ -43,7 +44,8 @@ const fetchPhotos = () => async (dispatch: any, getState: GetState, { flickrAPIS
 const fetchPhotosByPage = (currentPage: number) => async (dispatch: any, getState: GetState, { flickrAPIService }: ServiceLocatorInterface) => {
   dispatch(getPhotosIsLoading());
   const { searchText, rowsPerPage } = getState().searchReducer;
-  if(searchText === '') {
+  const emptyString:string = '';
+  if(searchText === emptyString) {
     dispatch(clearPhotos());
   }
   try {
