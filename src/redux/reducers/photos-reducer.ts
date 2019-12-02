@@ -19,7 +19,7 @@ export const defaultState: photosReducerInterface = {
   total: '',
 };
 
-const photosReducer = (state = defaultState, action: any): photosReducerInterface => {
+const photosReducer = (state: photosReducerInterface = defaultState, action: any): photosReducerInterface => {
   switch (action.type) {
     case Constants.GET_PHOTOS_SUCCESS: {
       return {
