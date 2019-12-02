@@ -10,7 +10,7 @@ export const defaultState: searchReducerInterface = {
   rowsPerPage: 25,
 };
 
-const searchReducer = (state = defaultState, action: any): searchReducerInterface => {
+const searchReducer = (state:searchReducerInterface = defaultState, action: any): searchReducerInterface => {
   switch (action.type) {
     case Constants.SET_SEARCH_TEXT: {
       return {
