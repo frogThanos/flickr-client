@@ -1,11 +1,12 @@
 import { Constants } from '../actions';
+import { Photo, modelTypes } from '../../models'
 
 export interface photosReducerInterface {
   isLoading: boolean;
   hasError: boolean;
   page: number;
   pages: number;
-  photo: [];
+  photo: modelTypes.PhotoModel[];
   total: string;
 }
 
@@ -25,7 +26,7 @@ const photosReducer = (state = defaultState, action: any): photosReducerInterfac
         ...state,
         page: action.page,
         pages: action.pages,
-        photo: action.photo,
+        photo: action.photo.map((item:modelTypes.PhotoModel) => new Photo(item.id, item.owner, item.secret, item.server, item.farm, item.title, item.ispublic, item.isfriend, item.isfamily)),
         total: action.total,
         isLoading: false,
         hasError: false,
