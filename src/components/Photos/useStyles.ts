@@ -12,12 +12,6 @@ const useStyles = makeStyles(() =>
     gridList: {
       width: '80%',
     },
-    gridTitle: {
-      '&:hover': {
-        transform: 'scale(1.01)',
-        transition: 'all 300ms ease-in-out;'
-      },
-    },
     image: {
       height: 250,
       width: 250,

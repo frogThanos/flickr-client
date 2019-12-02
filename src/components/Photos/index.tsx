@@ -8,9 +8,9 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import useStyles from './useStyles';
 
-// @ts-ignore because it doesn't have @types :(
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/opacity.css';
+// @ts-ignore
+import Lightbox from 'react-lightbox-component';
+import 'react-lightbox-component/build/css/index.css';
 
 const Photos: FC = () => {
   const classes = useStyles();
@@ -47,12 +47,15 @@ const Photos: FC = () => {
         {
           photo && photo.length !== 0 && !isLoading && photo.map((item: any) => {
             return (
-              <GridListTile key={item.id} className={classes.gridTitle}>
-                <LazyLoadImage
-                  alt={item.title}
-                  effect="opacity"
-                  src={`https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}.jpg`}
-                />
+              <GridListTile key={item.id}>
+                <Lightbox
+                  thumbnailWidth='350px'
+                  thumbnailHeight='300px'
+                  images={[{
+                    src: `https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}.jpg`,
+                    title: item.title,
+                    description: item.title,
+                  }]} />
                 <GridListTileBar
                   title={item.title}
                 />
