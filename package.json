@@ -9,7 +9,7 @@
     "@types/react": "16.9.11",
     "@types/react-dom": "16.9.4",
     "flickr-sdk": "^3.9.0",
-    "rc-pagination": "^1.20.11",
+    "rc-pagination": "^3.1.2",
     "react": "^16.14.0",
     "react-dom": "^16.12.0",
     "react-lightbox-component": "^1.2.1",
