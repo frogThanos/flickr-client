@@ -60,6 +60,7 @@ const fetchPhotosByPage = (currentPage: number) => async (dispatch: any, getStat
   }
 };
 
+// eslint-disable-next-line
 export default {
   getPhotosSuccess,
   clearPhotos,
