@@ -4,17 +4,8 @@ const useStyles = makeStyles(() =>
   createStyles({
     container: {
       display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'space-around',
-      overflow: 'hidden',
-      color: 'black',
-    },
-    gridList: {
       width: '80%',
-    },
-    image: {
-      height: 250,
-      width: 250,
+      margin: '10px auto 0 auto',
     },
   }),
 );

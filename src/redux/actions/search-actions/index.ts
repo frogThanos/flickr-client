@@ -6,6 +6,7 @@ const setSearchText = (searchText: string): setSearchTextTypes => ({
   payload: searchText
 });
 
+// eslint-disable-next-line
 export default {
   setSearchText,
 }
