@@ -9816,10 +9816,10 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-rc-pagination@^3.1.2:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/rc-pagination/-/rc-pagination-3.1.2.tgz#ab5eacd9c51f869e350d2245064babe91bc1f046"
-  integrity sha512-KbJvkTvRiD51vTIAi0oTARPUHNb0iV6njbDBe8yLkc3PWYDJaszASfuss6YJ98EIxEeGzuEk6xsUAEKWRJgz2g==
+rc-pagination@^3.1.7:
+  version "3.1.7"
+  resolved "https://registry.yarnpkg.com/rc-pagination/-/rc-pagination-3.1.7.tgz#13ba071a7fcb0c79896076806f3944653e7bf29e"
+  integrity sha512-sl0HGVhv6AsMzA5H3q7cBQcbAGj/sFjoiDSLvq3+/4IjihPqScZnSSiqR4Wu9G8RLgNjrBnGrSdTGO2Kyrt3IA==
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "^2.2.1"
